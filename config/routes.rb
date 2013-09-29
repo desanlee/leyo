@@ -1,4 +1,80 @@
 Leyo::Application.routes.draw do
+  devise_for :users
+
+  resources :users
+  
+  root to: 'static_pages#home'
+
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact' 
+  
+  match '/travelplanindex',  :to => 'travelplans#index'
+  match '/travelplancreate',  :to => 'travelplans#create'
+  
+  match '/travelnoteindex',  :to => 'travelnotes#index'
+  match '/travelnotecreate',  :to => 'travelnotes#create'
+  
+  match '/newplan',  :to => 'travelplans#newplan'
+
+  match '/localemanagement',  :to => 'locales#show'
+
+  match 'travelnotes/:id/newnotemicropost' => 'travelnotes#newnotemicropost'
+  match 'travelplans/:id/readview' => 'travelplans#readview'
+  match 'travelnotes/:id/readview' => 'travelnotes#readview'
+  match 'travelplans/:id/createnote' => 'travelplans#createnote'
+  
+  resources :microposts, only: [:create, :destroy]
+  
+  resources :planrelationships do
+    member do
+	  get :plan_id, :micropost_id, :positionindex
+	end
+  end
+  
+  resources :noterelationships do
+    member do
+    	    get :note_id, :micropost_id, :positionindex
+	end
+  end
+  
+  resources :traveltracks do
+	member do
+		get :plan_id, :startpoint, :terminal, :positionindex
+	end
+  end
+
+  resources :notetracks do
+	member do
+		get :note_id, :startpoint, :terminal, :positionindex
+	end
+  end
+  
+  resources :travelplans do
+    member do
+      get :id, :microposts
+    end
+  end
+ 
+  resources :travelnotes do
+    member do
+      get :id, :microposts
+    end
+  end
+  
+  resources :locales do
+    member do
+      get :localename, :localetype, :parent
+    end
+  end
+
+  resources :followedlocales do
+    member do
+      get :user_id, :locale_id
+    end
+  end
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
