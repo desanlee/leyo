@@ -1,0 +1,51 @@
+﻿<div class="row bkwhite">
+	<div class="span10 offset1 readview_font" >
+
+		<div class="readviewtitle span9 center "><br><br><%= @travelplan.locale %>，<%= @travelplan.planname %></div>
+
+		<pre class="plancontent readview_font span9">计划说明：<br><br><%= @travelplan.content %> <br> </pre>
+		
+		
+		<% index = 0 %>
+		<% $CURRENT_PLAN.traveltracks.each do |track| %> 
+			<li class="readviewtrack span padding_all_thin">行程<%= index=index+1%></li>
+			<div class="readviewtrack span7 padding_all_thin">
+				<% if track.startpoint != "" then %>
+					从 <%= track.startpoint %> - 到  <%= track.terminal %>
+				<% else %>
+					在  <%= track.terminal %> 
+				<% end %>
+			</div>
+	
+			<% track.microposts.each do |m|  %>
+				
+				<span class="row span10  padding_all_thin">
+				<% if  m.photo_file_name ==  nil then %>
+					<aside class="span9">
+				<% else %>
+					<aside class="span4">
+				<% end %>
+					
+						<% @infotype = m.infotype %>
+						<%= render partial: 'shared/show_plantype', locale: { infotype: @infotype} %>
+						<% if m.infotype == "track" then%>
+							<div class="infoother span" >从：<%= m.startpoint %> - 到： <%= m.endpoint %></div>
+						<% elsif m.infotype == "note" then%>
+							<div class="infoother span"><%= m.parent	 %></div>
+						<% else %>
+							<div class="infoother span"><%= m.infoname %></div>
+						<% end %>   
+							
+						<br><%= m.content %>
+						
+					</aside>
+	
+					<% if  m.photo_file_name !=  nil then %>
+						<div id = "999<%= m.id %>" class="span5 border_all"><%= image_tag m.photo(:large) %></div>							
+					<% end %>	
+				</span>	
+			<% end %>
+		<% end %>
+	</div>
+	<div class="span9"><br><br><br><br><br></div>
+</div>  

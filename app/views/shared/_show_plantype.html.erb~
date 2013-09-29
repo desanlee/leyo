@@ -1,0 +1,12 @@
+
+<% if @infotype=="track" then %>
+<span class="label plantypelabel label-warning span">线路</span>
+<% elsif @infotype=="sight" then %>
+<span class="label plantypelabel label-success span">景点</span>
+<% elsif @infotype=="eat" then %>
+<span class="label plantypelabel label-important span">美食</span>
+<% elsif @infotype=="hotel" then %>
+<span class="label plantypelabel label-info span">住宿</span>
+<% else %>
+<span class="label plantypelabel label-info span">游记</span>
+<% end %>

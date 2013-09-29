@@ -1,0 +1,67 @@
+﻿<div class="row">
+  <aside class="span3">
+  <%= form_for(@locale) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+	  <div class="infoname">
+		<%= f.text_field :localename, placeholder: "地点名称" %>
+	  </div>  
+	  <div class="parent">
+		<%= f.text_field :parent, placeholder: "所属地点" %>
+	  </div>
+
+	  <%= f.submit "添加地点", class: "btn btn-large btn-primary" %>
+  <% end %>
+  
+  <h3>我的关注(<%= @followedrelationships.count %>)</h3>
+  <hr>
+  <%= render 'shared/myfollow' %>
+  
+  </aside>
+  
+  <div class="span6 offset1 border_all">
+  <% if @parentlocale != nil then %>
+  	返回上级地点：<span class="span1"><%= link_to @parentlocale.localename, @parentlocale %></span>
+  <% else %>
+  	已经是根地点了
+  <% end %>
+  </div>
+  <br><br>
+  <span class="span4">
+    <% @locales.each do |locale| %>
+	<div class="span3">
+	    <span class="span1"><%= link_to locale.localename, locale %></span>
+	    <span class="plandate span"><%= link_to "删除", locale, method: :delete, data: { confirm: "确定删除?" }  %></span>
+
+		<%= form_for @followedlocale do |f| %>
+		  <% @followedlocale.locale_id = locale.id %>
+		  <div><%= f.hidden_field :locale_id %></div>
+		  <div class="actions plandate span1"><%= f.submit "关注" %></div>
+		<% end %>
+
+		</div>
+    <% end %>
+    <%= will_paginate @locales %>
+  </span>
+    <span class="span4">
+    <% if @childlocales != nil then%>
+	    <% @childlocales.each do |locale| %>
+			<div class="span3">
+			<span class="span1"><%= link_to locale.localename, locale %></span>
+		    <span class="plandate span"><%= link_to "删除", locale, method: :delete, data: { confirm: "确定删除?" } %></span>
+	
+			<%= form_for @followedlocale do |f| %>
+			  <% @followedlocale.locale_id = locale.id %>
+			  <div><%= f.hidden_field :locale_id %></div>
+			  <div class="actions plandate span1"><%= f.submit "关注" %></div>
+			<% end %>
+	
+			</div>
+	    <% end %>
+    <% else %>
+    	<h3>没有二级地点了</h3>
+    <% end %>
+    <%= will_paginate @locales %>
+  </span>
+  
+</div>

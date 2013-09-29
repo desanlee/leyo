@@ -1,0 +1,31 @@
+<script type="text/javascript" language="JavaScript">
+<!--
+function enlarge(photoid) { 
+	document.getElementById(photoid).className="travelnote_edit_big";
+	document.getElementById("999"+photoid).style.display="block";
+}
+function makesmall(photoid) { 
+	document.getElementById(photoid).className="travelnote_edit_small";
+	document.getElementById("999"+photoid).style.display="none";
+}
+--></script>
+
+<div>
+	<%= form_for @notemicropost do |f| %>
+		<div class="span5">
+			<% focuspara = 'enlarge(' << String(@ttrack.id) << ')' %>
+			<% leavepara = 'makesmall(' << String(@ttrack.id) << ')' %>
+			<%= f. text_area :content, id: @ttrack.id, placeholder: "+  添加游记", class: "travelnote_edit_small", onfocus: focuspara %>
+		</div>
+		
+		<%= f.hidden_field :parent,  value:  @ttrack.terminal %>
+		<%= f.hidden_field :infotype,  value: "note" %>
+		<%= f.hidden_field :owner, value: @ttrack.id %>
+		
+		<div id = '999<%= @ttrack.id %>' class = "span5 padding_bt_mini" style="display:none">
+			<div class="span"><%= f.file_field :photo %></div>
+			<%= f.submit "OK", class: "span btn btn-small btn-primary plandate" %>
+			<div class="span btn btn-small btn-primary plandate" onclick='<%=leavepara%>'>取消</div>
+		</div>
+	  <% end %>
+  </div>

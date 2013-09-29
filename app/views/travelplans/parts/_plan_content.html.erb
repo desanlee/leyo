@@ -1,0 +1,52 @@
+﻿<script type="text/javascript" language="JavaScript">
+<!--
+function EditPlan() {
+  document.getElementById("EditPlan").style.display="block";
+  document.getElementById("ShowPlan").style.display="none";
+}
+function QuitEditPlan() {
+  document.getElementById("EditPlan").style.display="none";
+  document.getElementById("ShowPlan").style.display="block";
+}
+--></script>
+
+<div class ="span7" id="ShowPlan" style="display:block">
+
+	<div class="plantitle span6 center "><%= @travelplan.locale %>，<%= @travelplan.planname %></div>
+<div class="span plandate"><%= link_to "创建游记", {controller: "travelplans", action: "createnote"}%></div>
+	<button id="EditPlanBtn" class="span1 btn btn-primary plandate" onclick="EditPlan()">编辑</button>
+
+	<div class="plantitle "><br><br>计划说明：</div>
+	<div class="span7">
+		<% if @travelplan.content == "" %>
+			<pre class="plancontent"><h2>计划没有详细说明，点击‘编辑’添加说明</h2></pre>
+		<% else %>
+			<pre class="plancontent"><%= @travelplan.content %> <br> </pre>
+		<% end %>
+	</div>
+	
+  </div>
+
+  <div id="EditPlan"  style="display:none">
+	  <%= form_for(@travelplan) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+		  <div class="span6">
+			计划标题：<%= f.text_field :planname, placeholder: "计划标题" %>
+		  </div>
+		  
+		  <div class="span6">
+			计划说明：<%= f.text_area :content, placeholder: "填写具体信息...", class: "plan_full" %>
+		  </div>
+
+		  <div class = "span1">
+		    <%= f.submit "保存", class: "btn btn-primary" %>
+		  </div>
+	  <% end %>
+	  <div class="span1">
+		<button id="QuitEditPlan" class="btn btn-primary" onclick="QuitEditPlan()">取消</button>
+	  </div>
+  </div>
+ 
+   <div class ="span7" style="display:block"> 
+ 	<hr><div class="plantitle span6 center "></div>
+ </div>

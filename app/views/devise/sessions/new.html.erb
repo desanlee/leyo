@@ -1,0 +1,23 @@
+<h2>登录LEYO</h2>
+
+<div class="span5 offset3">
+	<br><br>
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  <div class="span2"><%= f.label :用户名（邮箱） %></div>
+	  <div><%= f.email_field :email %></div>
+	
+	  <div class="span2"><%= f.label :密码 %></div>
+	  <div><%= f.password_field :password %></div>
+	
+	  <% if devise_mapping.rememberable? -%>
+	  <br>
+	    <div class="span5 center"><%= f.check_box :remember_me %>  记住我的登陆</div>
+	  <% end -%>
+	  <br>
+	  <div class="span5 center"><%= f.submit "确定登录" %></div>
+	<% end %>
+	
+	<br><br> <div class="span5 center">
+	<%= render "devise/shared/links" %>
+	</div>
+</div>

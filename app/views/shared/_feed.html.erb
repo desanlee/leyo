@@ -1,0 +1,11 @@
+<% if @feed_items.any? %>
+  <ol class="microposts">
+    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items %>
+<% else %>
+  <br>
+  <h2>没有信息来自您关注的用户或者地点</h2>
+  <br>
+  <h2>请关注更多地点或用户</h2>
+<% end %>

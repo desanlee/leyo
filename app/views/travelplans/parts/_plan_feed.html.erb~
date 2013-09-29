@@ -1,0 +1,11 @@
+<% if @feed_items.any? %>
+  <ol class="microposts" >
+    <%= render partial: 'travelplans/parts/plan_feed_item', collection: @feed_items %>
+    <%= will_paginate @feed_items %>
+    </ol>
+<% else %>
+  <br>
+  <h2>没有相应地区的攻略信息</h2>
+  <br>
+  <h2>点击‘添加攻略’</h2>
+<% end %>

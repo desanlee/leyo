@@ -1,0 +1,10 @@
+
+<% if @followedrelationships.any? %>
+  <% @followedrelationships.each do |followedlocale| %>
+	<div class="span2"><%= Locale.find_by_id(followedlocale.locale_id).localename %></div>
+	<span class="plandate span"><%= link_to "x", followedlocale, method: :delete, data: { confirm: "确定取消关注?" } %></span>
+  <% end %>
+<% else %>
+<h2>您没有关注任何地点</h2>
+<br>
+<% end %>

@@ -1,0 +1,22 @@
+<div class="row">
+
+<%= form_for(@travelplan) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="span1">
+    <%= f.text_field :locale, placeholder: "旅行目的地" %>
+  </div>
+   
+  <div class="span6">
+    <%= f.text_field :planname, placeholder: "计划标题" %>
+  </div>
+  
+  <div class="span7">
+    <%= f.text_area :content, placeholder: "填写具体信息...", class: "plan_full" %>
+  </div>
+ 
+  <div class = "span1">
+  <%= f.submit "提交", class: "btn btn-large btn-primary" %>
+  </div>
+  
+  <% end %>

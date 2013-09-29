@@ -1,0 +1,99 @@
+﻿<script type="text/javascript" language="JavaScript">
+<!--
+
+function AddTrack() {
+   document.getElementById("notetrackform").style.display="block";
+   document.getElementById("addtrackbtn").style.display="none";
+   document.getElementById("quitetrackbtn").style.display="block";
+}
+
+function QuiteAddTrack() {
+   document.getElementById("notetrackform").style.display="none";
+   document.getElementById("addtrackbtn").style.display="block";
+   document.getElementById("quitetrackbtn").style.display="none";
+}
+
+function ActivateTrack(trackid) {
+
+}
+
+
+function showtrackphoto(photoid) { 
+	if (document.getElementById(photoid).className=="span5 border_all" )
+		document.getElementById(photoid).className="span1";
+	else
+		document.getElementById(photoid).className="span5 border_all";
+}
+
+--></script>
+<hr>
+<% $CURRENT_INDEX = 1; i=0 %>
+<% index = 0 %>
+<% $CURRENT_NOTE.notetracks.each do |track| %> 
+		<% $CURRENT_INDEX = track.positionindex; i=i+1 %>
+		<li class="plantitle span ">行程<%= index=index+1%></li>
+		<div class=" titlelabel  border_b span5">
+			<% if track.startpoint != "" then %>
+				从 <%= track.startpoint %> - 到  <%= link_to track.terminal  , edit_notetrack_path(track)%>
+			<% else %>
+				在  <%= link_to track.terminal , edit_notetrack_path(track)%> 
+			<% end %>
+			<div class="plandate"><%= link_to "delete", Notetrack.find_by_id(track), method: :delete, data: {  } %></div>
+		</div>
+
+		<div class=" span">
+			<% if i != 1 %>
+				<%= form_for track do |f| %>
+					<%= f.hidden_field :id %>
+					<button class= "btn btn-small">u</button>
+				<% end %>
+			<% else %>
+				<button class= "btn btn-small"></button>
+			<% end %>
+		</div>
+
+		<% track.microposts.each do |m|  %>
+			<span class="row span7 bkgrey padding_bt_mini">
+				<div class="plandate span"><%= link_to "x", track.noterelationships.find_by_micropost_id(m), method: :delete, data: {  } %></div>
+				
+				<aside class="span5"><li><%= m.content %></li>
+				<hr>
+				</aside>
+
+				<% if  m.photo_file_name !=  nil then %>
+					<% jpara = 'showtrackphoto(999' << String(m.id) << ')' %>
+					<div id = "999<%= m.id %>" class="span1"><%= image_tag m.photo(:large), onclick: jpara %></div>
+												
+				<% end %>	
+			</span>
+		<% end %>
+		<div class="span7 bkgrey padding_bt_mini">
+			<% @ttrack = track %>
+			<%= render 'travelnotes/parts/note_form' , collection: @ttrack%>
+		</div>
+<% end %>
+ 
+ 
+<% if $CURRENT_NOTE.notetracks.count == 0 %>
+	<h2>没有任何行程信息，点击‘添加行程’</h2>
+<% end %>
+  
+<div class = "span7"><br><hr><br></div>
+
+<button id="addtrackbtn" class="span btn btn-primary plandate" onclick="AddTrack()">添加行程</button>
+  
+<span id="notetrackform" class="row span6" style="display:none">
+	<%= form_for(@notetrack) do |tt| %>
+		<span class="span2 ">
+		<%= tt.text_field :terminal, placeholder: "终点" %>
+		</span>
+		<span class="span2 offset1">
+			<%= tt.text_field :startpoint, placeholder: "起点(可以不填起点)"  %>
+		</span> 
+		<span class = "span">
+			<%= tt.submit "确定", class: "span btn btn-primary plandate" %>
+		</span>  
+	<% end %>  
+	<button id="quitetrackbtn" class="span btn btn-primary " style="display:none" onclick="QuiteAddTrack()">取消</button>
+</span> 
+

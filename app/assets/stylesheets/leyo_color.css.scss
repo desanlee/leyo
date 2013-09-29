@@ -1,0 +1,55 @@
+/* Definations for Colors*/
+
+.bkground_blue {
+	background-color: AliceBlue;	
+}
+
+/* Definations for Borders*/
+
+.border_all {
+	border:LightGrey solid thin;
+}
+
+.border_lr {
+	border-left:LightGrey solid thin;
+	border-right:LightGrey solid thin;
+}
+
+.border_l {
+	border-left:LightGrey solid thin;
+}
+
+.border_b {
+	border-bottom:Grey solid thin;
+}
+
+/*Defination for */
+
+.padding_bt_mini {
+	padding: 4px;
+}
+
+.padding_all_thin {
+	padding: 18px;
+}
+
+.padding_all_thin_tb {
+	padding_top: 18px;
+	padding_bottom: 18px;
+}
+
+.padding_all_deep {
+	padding: 60px;
+}
+
+.bkgrey {
+	background-color: WhiteSmoke 
+}
+
+.bkdarkgrey {
+	background-color: DarkGrey 
+}
+
+.bkwhite {
+	background-color: White 
+}

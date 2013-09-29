@@ -1,0 +1,68 @@
+﻿<script type="text/javascript" language="JavaScript">
+<!--
+function AddMicropost() {
+  document.getElementById("NewMicropost").style.display="block";
+  document.getElementById("AddBtn").style.display="none";
+  document.getElementById("QuitMicropostBtn").style.display="block";
+  
+  document.getElementById("micropost_infoname").style.display="none";
+  document.getElementById("micropost_endpoint").style.display="block";
+  document.getElementById("micropost_content").style.display="block";
+}
+
+function QuitMicropost() {
+  document.getElementById("NewMicropost").style.display="none";
+  document.getElementById("AddBtn").style.display="block";
+  document.getElementById("QuitMicropostBtn").style.display="none";
+}
+
+function cleartest() { 
+  document.getElementById("micropost_infoname").style.display="none";
+  document.getElementById("micropost_startpoint").style.display="none";
+  document.getElementById("micropost_endpoint").style.display="none";
+}
+
+// 输入一条景点信息
+function selectsight() {
+  cleartest();
+  document.getElementById("micropost_infoname").style.display="block";
+  document.getElementById("micropost_infoname").placeholder="景点名称";
+}
+
+//输入一条线路信息
+function selecttrack() {
+  cleartest();
+  document.getElementById("micropost_startpoint").style.display="block";
+  document.getElementById("micropost_endpoint").style.display="block";
+  document.getElementById("micropost_startpoint").placeholder="线路起点";
+  document.getElementById("micropost_endpoint").placeholder="线路终点";
+}
+
+// 输入一条餐厅信息
+function selecteat() {
+  cleartest();
+  document.getElementById("micropost_infoname").style.display="block";
+  document.getElementById("micropost_infoname").placeholder="美食或饭馆的名称";
+}
+
+// 输入一条住宿信息
+function selecthotel() {
+  cleartest();
+  document.getElementById("micropost_infoname").style.display="block";
+  document.getElementById("micropost_infoname").placeholder="旅馆或营地名称";
+}
+--></script>
+  
+<script>clear();</script> 
+
+<div class="row">
+	<div id="NewMicropost" style="display:none">
+	<% @planmicropost.parent = $CURRENT_PLAN.locale %>
+
+</div>
+	
+
+
+
+	
+  

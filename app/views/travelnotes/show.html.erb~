@@ -1,0 +1,20 @@
+﻿
+<div class="row">
+	<aside class="span7 padding_all_thin border_all">
+	<h3 class="label titlelabel center" >游记 - <%= link_to "阅读模式", {controller: "travelnotes", action: "readview"} %></h3>
+		<div class="row">		  
+			<%= render 'travelnotes/parts/note_content' %>
+			<%= render 'travelnotes/parts/note_track' %>	  
+			
+		</div>
+	</aside>
+
+	<div class="span3 offset1  bkground_blue  padding_all_thin">
+	 
+		<h3 class="label titlelabel center">我关注的朋友</h3>
+		<hr>
+		<section>
+			<%= render 'shared/myfriend' %>
+		</section>
+	 </div>
+</div>  

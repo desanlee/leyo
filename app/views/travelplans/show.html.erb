@@ -1,0 +1,19 @@
+﻿
+<div class="row">
+	<aside class="span7 padding_all_thin border_all">
+	<h3 class="label titlelabel center" >旅行活动计划 <%= link_to "阅读模式", {controller: "travelplans", action: "readview"} %></h3>
+		<div class="row">		  
+			<%= render 'travelplans/parts/plan_content' %>
+			<%= render 'travelplans/parts/plan_track' %>	  
+			
+		</div>
+	</aside>
+
+	<div class="span3  bkground_blue  padding_all_thin">
+		<h3 class="label titlelabel center" >攻略信息<br>来自：<%= $CURRENT_LOCALE %></h3>
+<br>
+			<%= render 'travelplans/parts/micropost_form' %>
+		
+		<%= render 'travelplans/parts/plan_feed' %>
+	</div>
+</div>  

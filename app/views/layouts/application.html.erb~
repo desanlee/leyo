@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "LEYO！ 乐游！", '#', id: "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "帮助",    '#' %></li>
+              <li><%= link_to "登录", '#' %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+	<div>
+        <ul class="mainmenu nav pull-left  center">
+            <li class=" readviewtrack" ><%= link_to image_tag('/picture/info.png'),    '/' %></li>
+            攻略
+            <br><br><br>
+            <li class="  readviewtrack"><%= link_to image_tag('/picture/plan.png'), '/travelplanindex' %></li>
+            计划
+            <br><br><br>
+            <li class="  readviewtrack"><%=link_to image_tag('/picture/note.png'), '/travelnoteindex' %></li>
+            游记
+            <br><br><br><br>
+	    <li class=" center"><%= link_to "管理地点", '/localemanagement' %></li>
+	</ul>
+    </div>
+	
+	<!--
+	
+	  <div class="center hero-unit span11 offset2">
+		<h2>
+			在这里发现旅行，并分享旅途的精彩。
+		</h2>
+	  </div>
+    -->
+
+    <div class="container">
+      <%= yield %>
+    </div>
+	
+	<footer class="footer">
+  <small>
+    LEYO！乐游！  by Desanlee@gmail.com
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "网站介绍",   '#' %></li>
+      <li><%= link_to "联系我", '#' %></li>
+      <li><%= link_to "最近新闻", '#' %></li>
+    </ul>
+  </nav>
+</footer>
+
+  </body>
+</html>

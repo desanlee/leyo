@@ -1,0 +1,22 @@
+<div class="row">
+
+<%= form_for(@travelnote) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="span3">
+    <%= f.text_field :locale, placeholder: "地点" %>
+  </div>
+   
+  <div class="span3">
+    <%= f.text_field :notename, placeholder: "游记标题" %>
+  </div>
+  
+  <div class="span3">
+    <%= f.text_area :content, placeholder: "游记详细内容...", class: "plan_full" %>
+  </div>
+ 
+  <div class = "span3">
+  <%= f.submit "继续", class: "btn btn-small btn-primary" %>
+  </div>
+  
+  <% end %>

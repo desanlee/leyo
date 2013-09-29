@@ -1,0 +1,27 @@
+﻿<div class="row">
+  <aside class="span7 border_l padding_all_thin">
+ 	 <h3 class="label titlelabel center">新信息，来自我关注的地点和朋友</h3><br>
+
+ 	 <%= render 'shared/filter' %>
+ 	 <%= render 'shared/feed' %>
+  </aside>
+
+  <div class="span3  bkground_blue  padding_all_thin">
+	<h3 class="label titlelabel center" >分享我的旅行</h3>
+    <section>
+      <%= render 'shared/micropost_form' %>
+    </section>
+	<br>
+	<h3 class="label titlelabel center">我关注的地点</h3>
+	<hr>
+    <section>
+      <%= render 'shared/myfollow' %>
+    </section>
+	<br>
+	<h3 class="label titlelabel center">我关注的朋友</h3>
+	<hr>
+    <section>
+      <%= render 'shared/myfriend' %>
+    </section>
+  </div>
+</div>

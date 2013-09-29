@@ -1,0 +1,14 @@
+<div class="row center">
+	<%= form_tag action: :home do %>
+		只显示：
+		<%= check_box_tag :note, params[:note] %>游记
+		<%= check_box_tag :sight, params[:sight] %>景点
+		<%= check_box_tag :track, params[:track] %>线路
+		<%= check_box_tag :food, params[:food] %>美食
+		<%= check_box_tag :hotel, params[:hotel] %>住宿
+		
+		<%= hidden_field_tag :filter, params[:filter], value: "filter" %>住宿
+		
+		<%= submit_tag "过滤", class: "btn btn-small" %>
+	<% end %>
+</div>

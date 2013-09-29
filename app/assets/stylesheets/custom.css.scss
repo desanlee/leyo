@@ -1,0 +1,249 @@
+﻿@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 1px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover { 
+      color: $grayDarker;
+    }
+  }  
+  small { 
+    float: left; 
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+/* main menu*/
+.mainmenu {
+  margin-top: 70px;
+  margin-left: 25px;
+  font-weight: bold;
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.infotype {
+  float: right;
+  margin-left: 10px;
+}
+.infoother {
+  float: left;
+  margin-right: 30px;
+  font-weight: bold;
+  color: DarkBlue;
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+/* travelplan */
+
+.plan_full {
+  width: 450px;
+}
+
+.plantitle {
+  float: left;
+  margin-right: 0px;
+  font-weight: bold;
+  color: DarkGreen;
+  font-size: 1.5em;
+  margin-top: 0px;
+}
+
+.plancontent {
+  margin-right: 30px;
+  color: Black;
+  background-color: white;
+  font-size: 1.1em;
+  margin-top: 20px;
+}
+
+.plandate {
+  float: right;
+}
+
+.plantypelabel {
+  font-size: 1.1em;
+  border-right: 10px;
+}
+
+.titlelabel {
+  font-size: 1.2em;
+}
+
+.plantrack  {
+  &:hover {
+    background-color: White;
+    text-decoration: none;
+  }
+}
+
+.localelabel {
+  float: left;
+  font-size: 1.1em;
+  border-right: 10px;
+}
+
+#travelplan_locale {
+  width: 200px;
+}
+
+#travelplan_planname {
+  width: 200px;
+}
+
+#travelplan_content {
+  height: 200px;
+  width: 200px;
+}
+
+.traveltrack {
+  float: left;
+  margin-right: 3px;
+  font-weight: bold;
+  color: darkgreen;
+  font-size: 1.2em;
+  margin-top: 10px;
+  border-bottom: 1px solid $grayMediumLight;
+}
+  
+.traveloperation {
+  float: left;
+  margin-right: 3px;
+  font-weight: bold;
+  color: darkgreen;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+#inputText_0, #inputText_1, #inputText_2, #inputText_3{
+  width: 450px;
+}
+
+/* travelplan page - micropost*/
+
+.plan_full {
+  width: 450px;
+}
+
+#planmicropost_parent {
+  width: 450px;
+}
+
+/* Classes for showing photo */
+.showphoto {
+  padding-top: 9px;
+}
+

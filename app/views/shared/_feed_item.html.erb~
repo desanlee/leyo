@@ -1,0 +1,33 @@
+<script type="text/javascript" language="JavaScript">
+<!--
+function showphoto(photoid) { 
+	if (document.getElementById(photoid).className=="span6 border_all" )
+		document.getElementById(photoid).className="span1";
+	else
+		document.getElementById(photoid).className="span6 border_all";
+}
+--></script>
+
+<li>
+
+ <div class="row">
+ 
+ <aside class="span6">
+	  <% @infotype = feed_item.infotype %>
+	  <%= render partial: 'shared/show_plantype', locale: { infotype: @infotype} %>
+	  <div class="label plantypelabel label span"><%= feed_item.parent %></div>
+	  <% if feed_item.infotype == "track" then%>
+	    <div class="infoother span">´Ó<%= feed_item.startpoint %> - µ½<%= feed_item.endpoint %></div>
+	  <% else %>
+		<div class="infoother span"><%= feed_item.infoname %></div>
+	  <% end %> 
+	   <div class="plandate span"><%= link_to "X", feed_item, method: :delete, data: { confirm: "Sure?" } %></div>
+
+	<div class="span6"><%= feed_item.content %></div>
+</aside>
+  <% if  feed_item.photo_file_name !=  nil then %>
+  	<% jpara = 'showphoto(' << String(feed_item.id) << ')' %>
+  	<div id = "<%= feed_item.id %>" class="span1"><%= image_tag feed_item.photo(:large) , onclick: jpara  %> </div>
+  <% end %>
+  </div>
+</li>

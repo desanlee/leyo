@@ -1,0 +1,50 @@
+﻿<div class="row bkwhite">
+	<div class="span10 offset1 readview_font" >
+
+		<div class="readviewtitle span9 center "><br><br><%= @travelnote.locale %>，<%= @travelnote.notename %></div>
+
+		<div class="span9 center"><br><%= @trackrecord %></div>
+		<pre class="plancontent readview_font span9">游记说明：<br><br><%= @travelnote.content %> <br> </pre>
+		
+		
+		<% index = 0 %>
+		<% $CURRENT_NOTE.notetracks.each do |track| %> 
+			<li class="readviewtrack span9 padding_all_thin border_b" >
+				行程<%= index=index+1%>：
+				<% if track.startpoint != "" then %>
+					从 <%= track.startpoint %> - 到  <%= track.terminal %>
+				<% else %>
+					在  <%= track.terminal %> 
+				<% end %>
+			</li>
+	
+			<% track.microposts.each do |m|  %>
+				
+				<span class="row span9  padding_all_thin border_b">
+				<% if  m.photo_file_name ==  nil then %>
+					<aside class="span8 padding_all_thin">
+				<% elsif m.content.length < 20 %>
+					<aside class="span8 padding_all_thin">
+					<% photoclass = "span7  border_all" %>
+				<% elsif m.content.length < 80 %>
+					<aside class="span4 padding_all_thin">
+					<% photoclass = "span4 border_all" %>
+				<% else %>
+					<aside class="span4 plandate padding_all_thin">
+					<% photoclass = "span4 border_all" %>
+				<% end %>
+						
+				<li class="nav readview_font"><%= m.content %></li>
+						
+				</aside>
+	
+				<% if  m.photo_file_name !=  nil then %>
+						<div id = "999<%= m.id %>" class="<%= photoclass %>" ><%= image_tag m.photo(:large) %></div>							
+				<% end %>	
+				</span>
+				
+			<% end %>
+		<% end %>
+	</div>
+	<div class="span9"><br><br><br><br><br></div>
+</div>  

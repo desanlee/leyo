@@ -1,0 +1,58 @@
+class TravelnotesController < ApplicationController
+
+  def index
+    @travelnotes = Travelnote.paginate(page: params[:page])
+    @travelnote = Travelnote.new(params[:travelnote])
+  end
+
+  def newnote
+  	  @travelnote = Travelnote.new(params[:travelnote])
+  end
+  
+  def create
+  	  @travelnote = Travelnote.new(params[:travelnote])
+  	  if @travelnote.save
+  	  	  redirect_to @travelnote
+    else
+      redirect_to root_url
+    end
+  end
+
+  def show
+  	  @travelnote = Travelnote.find(params[:id])
+  	  $CURRENT_NOTE = @travelnote
+  	  @notemicropost = Micropost.new
+  	  @notetrack = Notetrack.new
+  	  @currentindex = 0
+  end
+
+  def readview 
+  	  @travelnote = Travelnote.find(params[:id])
+  	  @trackrecord = "";
+  	  $CURRENT_NOTE.notetracks.each do |nt|
+  	  	  @trackrecord << "-" << nt.terminal << "-"
+  	  end
+  	  render layout: 'readview'
+  end
+  
+  def edit
+  	  @travelnote = Travelnote.find(params[:id])
+  end
+
+  def update
+  	  @travelnote = Travelnote.find(params[:id])
+  	  if @travelnote.update_attributes(params[:travelnote])
+  	  	  flash[:success] = "Travelnote updated!"
+  	  	  redirect_to :back
+  	  else
+  	  	  render 'edit'
+  	  end
+  end
+  
+  def destroy
+  	  @travelnote = Travelnote.find(params[:id])
+  	  @travelnote.destroy
+  	  redirect_to '/travelnoteindex'
+  end
+  
+end

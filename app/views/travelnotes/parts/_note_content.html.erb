@@ -1,0 +1,52 @@
+﻿<script type="text/javascript" language="JavaScript">
+<!--
+function EditNote() {
+  document.getElementById("EditNote").style.display="block";
+  document.getElementById("ShowNote").style.display="none";
+}
+function QuitEditNote() {
+  document.getElementById("EditNote").style.display="none";
+  document.getElementById("ShowNote").style.display="block";
+}
+--></script>
+
+<div class ="span7" id="ShowNote" style="display:block">
+
+	<br><div class="plantitle span6 center "><%= @travelnote.locale %>，<%= @travelnote.notename %></div>
+
+	<button id="EditNoteBtn" class="span1 btn btn-primary plandate" onclick="EditNote()">编辑</button>
+
+	<div class="span7">
+		<% if @travelnote.content == "" %>
+			<pre class="plancontent"><h2>计划没有详细说明，点击‘编辑’添加说明</h2></pre>
+		<% else %>
+			<pre class="plancontent"><%= @travelnote.content %> <br> </pre>
+		<% end %>
+	</div>
+	
+  </div>
+
+  <div id="EditNote"  style="display:none">
+	  <%= form_for(@travelnote) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+		   
+		  <div class="span6">
+			游记标题：<br><%= f.text_field :notename, placeholder: "计划标题" %>
+		  </div>
+		  
+		  <div class="span6">
+			游记说明：<%= f.text_area :content, placeholder: "填写具体信息...", class: "plan_full" %>
+		  </div>
+
+		  <div class = "span1">
+		    <%= f.submit "保存", class: "btn btn-primary" %>
+		  </div>
+	  <% end %>
+	  <div class="span1">
+		<button id="QuitEditNote" class="btn btn-primary" onclick="QuitEditNote()">取消</button>
+	  </div>
+  </div>
+ 
+   <div class ="span7" style="display:block"> 
+ 	<hr><div class="plantitle span6 center "></div>
+ </div>

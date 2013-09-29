@@ -1,0 +1,34 @@
+﻿
+<div class="row">
+  <aside class="span7 border_l padding_all_thin">
+ 	 <h3 class="label titlelabel center">我和朋友们的游记</h3><br>
+ 	 
+	 <ul>
+	  <% @travelnotes.each do |travelnote| %>
+	    <li>
+	      <%= link_to travelnote.notename, travelnote %>
+	      <span class="plandate"><%= link_to"发布",  "#" %></span>
+	      <span class="plandate span1"><%= link_to "删除", travelnote, method: :delete, data: { confirm: "确定删除?" } %></span>
+	      <span class="plandate">Posted <%= time_ago_in_words(travelnote.created_at) %> ago.</span>
+	  
+	    </li>
+	  <% end %>
+	  <%= will_paginate @travelnotes %>
+	</ul>
+	
+</aside>
+
+	  <div class="span3 offset1  bkground_blue  padding_all_thin">
+		<h3 class="label titlelabel center">写篇新游记</h3>
+		<hr>
+		<section>  
+			<%= render 'travelnotes/parts/addnote_form' %>
+		</section>
+	 
+		<h3 class="label titlelabel center">我关注的朋友</h3>
+		<hr>
+		<section>
+			<%= render 'shared/myfriend' %>
+		</section>
+	 </div>
+</div>
